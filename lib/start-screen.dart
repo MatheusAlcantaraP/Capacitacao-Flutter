@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:asicoffee/menu-screen.dart';
 
-class StartScreen extends StatelessWidget{
+class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
 
   @override
@@ -12,19 +12,32 @@ class StartScreen extends StatelessWidget{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-
             Spacer(),
 
-            Image.asset('assets/images/coffee-beans.png', width: 130),
+            Image.asset('assets/images/coffee-beans3.png', width: 130),
 
             SizedBox(height: 18),
 
-            Text(
-              'AsiCoffee',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Asi',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 15, 13, 107),
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Coffee',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 248, 244, 244),
+                    ),
+                  ),
+                ],
               ),
             ),
 
@@ -44,10 +57,8 @@ class StartScreen extends StatelessWidget{
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const MenuScreen()
-                      )
+                    context,
+                    MaterialPageRoute(builder: (context) => const MenuScreen()),
                   );
                 },
                 icon: Icon(Icons.coffee),
@@ -57,7 +68,7 @@ class StartScreen extends StatelessWidget{
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  foregroundColor: const Color.fromARGB(255, 18, 67, 151),
+                  foregroundColor: const Color.fromARGB(255, 15, 13, 107),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

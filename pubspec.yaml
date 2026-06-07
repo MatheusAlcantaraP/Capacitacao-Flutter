@@ -61,6 +61,8 @@ flutter:
   assets:
     - assets/images/asimov.png
     - assets/images/coffee-beans.png
+    - assets/images/coffee-beans2.png
+    - assets/images/coffee-beans3.png
 
   
 

@@ -12,8 +12,6 @@ void main() {
               colors: [
                 const Color.fromARGB(255, 42, 99, 197),
                 const Color.fromARGB(255, 121, 160, 228),
-                                
-
               ],
               begin: AlignmentGeometry.topLeft,
               end: AlignmentGeometry.bottomRight,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:asicoffee/menu-screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -23,7 +24,7 @@ class StartScreen extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: 'Asi',
-                    style: TextStyle(
+                    style: GoogleFonts.plusJakartaSans(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(255, 15, 13, 107),
@@ -31,7 +32,7 @@ class StartScreen extends StatelessWidget {
                   ),
                   TextSpan(
                     text: 'Coffee',
-                    style: TextStyle(
+                    style: GoogleFonts.plusJakartaSans(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: const Color.fromARGB(255, 248, 244, 244),
@@ -46,7 +47,7 @@ class StartScreen extends StatelessWidget {
             Text(
               'O AsiCoffee é um aplicativo desenvolvido para conectar você aos melhores sabores do café, oferecendo uma experiência moderna, prática e acolhedora.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, color: Colors.white),
+              style: GoogleFonts.spaceGrotesk(fontSize: 18, color: Colors.white),
             ),
 
             SizedBox(height: 18),
@@ -64,7 +65,10 @@ class StartScreen extends StatelessWidget {
                 icon: Icon(Icons.coffee),
                 label: Text(
                   ' Explorar Cardápio',
-                  style: TextStyle(fontSize: 20),
+                  style: GoogleFonts.spaceGrotesk(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,

@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:asicoffee/start-screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      home: Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                const Color.fromARGB(255, 42, 99, 197),
-                const Color.fromARGB(255, 121, 160, 228),
-              ],
-              begin: AlignmentGeometry.topLeft,
-              end: AlignmentGeometry.bottomRight,
-            ),
-          ),
-          child: const StartScreen(),
+    const ProviderScope(
+      child: MaterialApp(
+        home: Scaffold(
+          body: MainContainer(),
+        ),
+      ),  
+    )
+  );
+}
+
+class MainContainer extends StatelessWidget {
+  const MainContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFFFFF2CF),
+            Color(0xFFEDE5D1),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
       ),
-    ),
-  );
+      child: const StartScreen(),
+    );
+  }
 }

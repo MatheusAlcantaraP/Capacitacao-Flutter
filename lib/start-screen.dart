@@ -15,7 +15,7 @@ class StartScreen extends StatelessWidget {
           children: [
             Spacer(),
 
-            Image.asset('assets/images/coffee-beans3.png', width: 130),
+            Image.asset('assets/images/asicoffee.png', width: 204),
 
             SizedBox(height: 18),
 
@@ -24,37 +24,38 @@ class StartScreen extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: 'Asi',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 30,
+                    style: GoogleFonts.inriaSans(
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 15, 13, 107),
+                      color: const Color(0xFF55A1E8),
                     ),
                   ),
                   TextSpan(
                     text: 'Coffee',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 30,
+                    style: GoogleFonts.inriaSans(
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 248, 244, 244),
+                      color: const Color(0xFF331B1B),
                     ),
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: 18),
+            SizedBox(height: 4),
 
             Text(
-              'O AsiCoffee é um aplicativo desenvolvido para conectar você aos melhores sabores do café, oferecendo uma experiência moderna, prática e acolhedora.',
+              'Conecta você aos melhores sabores do café!',
               textAlign: TextAlign.center,
-              style: GoogleFonts.spaceGrotesk(fontSize: 18, color: Colors.white),
+              style: GoogleFonts.inriaSans(fontSize: 18, color: Color(0xFF331B1B)),
             ),
 
-            SizedBox(height: 18),
+            
+            Spacer(),
 
             SizedBox(
-              width: double.infinity,
-              height: 55,
+              width:  260,
+              height: 70,
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
@@ -64,25 +65,23 @@ class StartScreen extends StatelessWidget {
                 },
                 icon: Icon(Icons.coffee),
                 label: Text(
-                  ' Explorar Cardápio',
-                  style: GoogleFonts.spaceGrotesk(
-                    fontSize: 20,
+                  'Explorar Cardápio',
+                  style: GoogleFonts.inriaSans(
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: const Color.fromARGB(255, 15, 13, 107),
+                  backgroundColor: Color(0xFF331B1B),
+                  foregroundColor:  Color(0xFFEDE5D1),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(24),
                   ),
                 ),
               ),
             ),
 
-            Spacer(),
-
-            Image.asset('assets/images/asimov.png', width: 80),
+            SizedBox(height: 60)
           ],
         ),
       ),

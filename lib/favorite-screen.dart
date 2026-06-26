@@ -11,8 +11,18 @@ class FavoritesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     
     final coffeeItens = ref.watch(coffeeProvider);
-    
+    final categoriaSelecionada = ref.watch(filterProvider);
+
     final favoriteItems = coffeeItens.where((item) => item.favorito).toList();
+
+
+    final List<dynamic> filteredItems;
+
+    if (categoriaSelecionada == 'Todos') {
+      filteredItems = favoriteItems; 
+    } else {
+        filteredItems = favoriteItems.where((item) => item.categoriaTexto == categoriaSelecionada).toList();
+    }
 
     return Container(
       decoration: const BoxDecoration(
@@ -25,10 +35,12 @@ class FavoritesScreen extends ConsumerWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: favoriteItems.isEmpty
+      child: filteredItems.isEmpty
           ? Center(
               child: Text(
-                'Você ainda não favoritou nenhum café!',
+                categoriaSelecionada == 'Todos'
+                  ? 'Você ainda não favoritou nenhum café!'
+                  : 'Nenhum Favorito em $categoriaSelecionada!',
                 style: GoogleFonts.inriaSans(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -37,9 +49,9 @@ class FavoritesScreen extends ConsumerWidget {
               ),
             )
           : ListView.builder(
-              itemCount: favoriteItems.length,
+              itemCount: filteredItems.length,
               itemBuilder: (context, index) {
-                final item = favoriteItems[index];
+                final item = filteredItems[index];
                 return CoffeeCard(item: item);
               },
             ),

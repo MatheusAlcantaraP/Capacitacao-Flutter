@@ -17,8 +17,6 @@ class MenuScreen extends ConsumerWidget {
     
     if (categoriaSelecionada == 'Todos'){
       filteredItems = coffeeItens;
-    } else if(categoriaSelecionada == 'Favoritos'){
-      filteredItems = coffeeItens.where((item) => item.favorito == true).toList();
     } else {
       filteredItems = coffeeItens.where((item) => item.categoriaTexto == categoriaSelecionada).toList();
     }

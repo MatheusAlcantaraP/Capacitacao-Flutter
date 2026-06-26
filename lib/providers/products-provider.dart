@@ -78,6 +78,18 @@ class CoffeeNotifier extends StateNotifier<List<CoffeeItem>> {
   }
 }
 
+class FilterNotifier extends StateNotifier<String> {
+  FilterNotifier() : super('Todos'); 
+
+  void setFilter(String newFilter) {
+    state = newFilter;
+  }
+}
+
+final filterProvider = StateNotifierProvider<FilterNotifier, String>((ref) {
+  return FilterNotifier();
+});
+
 final coffeeProvider = StateNotifierProvider<CoffeeNotifier, List<CoffeeItem>>((ref) {
   return CoffeeNotifier();
 });

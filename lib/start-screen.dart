@@ -1,5 +1,5 @@
+import 'package:asicoffee/tabs-screen.dart';
 import 'package:flutter/material.dart';
-import 'package:asicoffee/menu-screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
@@ -50,7 +50,6 @@ class StartScreen extends StatelessWidget {
               style: GoogleFonts.inriaSans(fontSize: 18, color: Color(0xFF331B1B)),
             ),
 
-            
             Spacer(),
 
             SizedBox(
@@ -60,7 +59,7 @@ class StartScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MenuScreen()),
+                    MaterialPageRoute(builder: (context) => const TabsScreen()),
                   );
                 },
                 icon: Icon(Icons.coffee),

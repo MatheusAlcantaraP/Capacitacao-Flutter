@@ -76,6 +76,15 @@ class CoffeeNotifier extends StateNotifier<List<CoffeeItem>> {
       return item;
     }).toList();
   }
+
+  void addItem(CoffeeItem newItem) {
+    state = [...state, newItem];
+  }
+
+  void removeItem(String id) {
+    state = state.where((item) => item.id != id).toList();
+  }
+
 }
 
 class FilterNotifier extends StateNotifier<String> {

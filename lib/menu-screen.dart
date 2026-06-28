@@ -1,34 +1,32 @@
 import 'package:asicoffee/card.dart';
 import 'package:asicoffee/providers/products-provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MenuScreen extends ConsumerWidget { 
+class MenuScreen extends ConsumerWidget {
   const MenuScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) { 
-    
-    final coffeeItens = ref.watch(coffeeProvider); 
+  Widget build(BuildContext context, WidgetRef ref) {
+    final coffeeItens = ref.watch(coffeeProvider);
     final categoriaSelecionada = ref.watch(filterProvider);
-    
+
     final List<dynamic> filteredItems;
-    
-    if (categoriaSelecionada == 'Todos'){
+
+    if (categoriaSelecionada == 'Todos') {
       filteredItems = coffeeItens;
     } else {
-      filteredItems = coffeeItens.where((item) => item.categoriaTexto == categoriaSelecionada).toList();
+      filteredItems = coffeeItens
+          .where((item) => item.categoriaTexto == categoriaSelecionada)
+          .toList();
     }
-        
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 248, 237, 208),
-              Color(0xFFEDE5D1),
-            ],
+            colors: [Color.fromARGB(255, 248, 237, 208), Color(0xFFEDE5D1)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -46,17 +44,50 @@ class MenuScreen extends ConsumerWidget {
                 ),
               ),
             ),
-        
+
             Expanded(
               child: filteredItems.isEmpty
-                ? Center(child: Text('Nenhum item encontrado nessa categoria!', style: GoogleFonts.inriaSans()))
-                : ListView.builder(
-                    itemCount: filteredItems.length,
-                    itemBuilder: (context, index) {
-                      final item = filteredItems[index];
-                      return CoffeeCard(item: item);
-                    },
-                  ),
+                  ? Center(
+                      child: Text(
+                        'Nenhum item encontrado nessa categoria!',
+                        style: GoogleFonts.inriaSans(),
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: filteredItems.length,
+                      itemBuilder: (context, index) {
+                        final item = filteredItems[index];
+                        return Dismissible(
+                          key: ValueKey(item.id), 
+                          direction: DismissDirection
+                              .endToStart, 
+                          background: Container(
+                            color: Colors.red,
+                            alignment: Alignment.centerRight,
+                            padding: const EdgeInsets.only(right: 20),
+                            child: const Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
+                          ),
+                          onDismissed: (direction) {
+                            ref
+                                .read(coffeeProvider.notifier)
+                                .removeItem(item.id);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  '${item.nome} removido do cardápio',
+                                ),
+                              ),
+                            );
+                          },
+                          child: CoffeeCard(
+                            item: item,
+                          ),
+                        );
+                      },
+                    ),
             ),
           ],
         ),
@@ -64,4 +95,3 @@ class MenuScreen extends ConsumerWidget {
     );
   }
 }
-
